@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes";
-const GOOGLE_BOOKS_API_KEY = ProcessingInstruction.env.API_KEY_GOOGLE; 
+const GOOGLE_BOOKS_API_KEY = process.env.API_KEY_GOOGLE; 
 
 export async function fetchBookFromGoogleBooks(query) {
     try {
