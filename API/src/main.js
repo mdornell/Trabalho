@@ -1,8 +1,6 @@
 import { fastify } from 'fastify';
 import connectDB from './db/connection.js';
-import bookRoutes from './routes/Routes.js';
-
-
+import bookRoutes from './routes/routes.js';
 
 export class Main {
     constructor() {
@@ -13,7 +11,6 @@ export class Main {
         const server = fastify();
 
         await connectDB();
-
 
         bookRoutes(server);
 

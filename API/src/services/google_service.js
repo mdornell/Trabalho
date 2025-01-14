@@ -18,7 +18,7 @@ export async function fetchBookFromGoogleBooks(query) {
             return {
                 title: bookData.title,
                 author: bookData.authors?.join(", ") || "Autor desconhecido",
-                year: bookData.publishedDate?.split("-")[0] || "Data desconhecida",
+                year: bookData.publishedDate?.split("-")[0] || 0,
                 genre: bookData.categories?.join(", ") || "Gênero desconhecido",
             };
         } else {
