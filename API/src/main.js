@@ -1,4 +1,5 @@
 import { fastify } from 'fastify';
+import fastifyCors from '@fastify/cors';
 import connectDB from './db/connection.js';
 import bookRoutes from './routes/routes.js';
 
@@ -9,6 +10,11 @@ export class Main {
 
     async init() {
         const server = fastify();
+
+        server.register(fastifyCors, {
+            origin: '*',
+            methods: '*',
+        });
 
         await connectDB();
 

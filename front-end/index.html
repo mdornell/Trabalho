@@ -15,8 +15,28 @@
 <body ng-app="LivrariaApp">
 
     <div ng-controller="LivrariaController as livraria">
-        
-        1 + 1 = {{1 + 1}}
+        <h1>Livraria</h1>
+
+        <form ng-submit="livraria.addBook()">
+            <input type="text" ng-model="livraria.pesq" placeholder="Título" required>
+            <button type="submit">{{'Adicionar'}}</button>
+        </form>
+
+        <form ng-submit="livraria.saveEdit()">
+            <input type="text" ng-model="livraria.newBook.title" placeholder="Título" required>
+            <input type="text" ng-model="livraria.newBook.author" placeholder="Autor" required>
+            <input type="number" ng-model="livraria.newBook.year" placeholder="Ano">
+            <input type="text" ng-model="livraria.newBook.genre" placeholder="Gênero">
+            <button type="submit" ng-disabled="livraria.editingIndex === null">{{'Salvar'}}</button>
+        </form>
+
+        <ul>
+            <li ng-repeat="book in livraria.books">
+                <strong>{{book.title}}</strong> por {{book.author}} ({{book.year}}) - {{book.genre}}
+                <button ng-click="livraria.editBook($index)">Editar</button>
+                <button ng-click="livraria.removeBook(book._id, $index)">Excluir</button>
+            </li>
+        </ul>
     </div>
     
 </body>
